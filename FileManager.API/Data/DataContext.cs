@@ -1,7 +1,7 @@
-using datingapp.api.Models;
+using FileManager.API.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace datingapp.api.Data
+namespace FileManager.API.Data
 {
     public class DataContext : DbContext
     {
@@ -9,23 +9,22 @@ namespace datingapp.api.Data
 
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<UserRole> UserRole { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<UserRole>()
-                .HasKey(k => new {k.UserId, k.RoleId});
+                .HasKey(ur => new {ur.UserId, ur.RoleId});
 
             builder.Entity<UserRole>()
                 .HasOne(u => u.User)
-                .WithMany(u => u.Role)
+                .WithMany(u => u.Roles )
                 .HasForeignKey(u => u.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
             
              builder.Entity<UserRole>()
                 .HasOne(u => u.Role)
-                .WithMany(u => u.User)
+                .WithMany(u => u.Users)
                 .HasForeignKey(u => u.RoleId)
                 .OnDelete(DeleteBehavior.Restrict);
 
