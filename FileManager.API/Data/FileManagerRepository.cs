@@ -35,14 +35,25 @@ namespace FileManager.API.Data
 
         public async Task<PagedList<User>> GetUsers(UserParams userParams)
         {
-            var users = _context.Users.OrderByDescending(u => u.LastActive).AsQueryable();
+            var users = _context.Users.OrderByDescending(u => u.LastName).AsQueryable();
 
             users = users.Where(u => u.Id != userParams.UserId);
 
             return await PagedList<User>.CreateAsync(users,userParams.PageNumber,userParams.PageSize);
         }
 
-       
+        public async Task<File> GetFile(int id)
+        {
+            var File = await _context.File.FirstOrDefaultAsync(p => p.Id == id);
+
+            return File;
+        }
+        public async Task<Role> GetRole(int id)
+        {
+            var Role = await _context.Role.FirstOrDefaultAsync(p => p.Id == id);
+
+            return Role;
+        }
         public async Task<bool> SaveAll()
         {
             return await _context.SaveChangesAsync() > 0;

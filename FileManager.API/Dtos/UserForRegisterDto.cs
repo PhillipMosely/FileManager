@@ -13,19 +13,21 @@ namespace FileManager.API.Dtos
         [StringLength(8,MinimumLength = 4, ErrorMessage = "You must specify password between 4 and 8 characters")]
         public string Password { get; set; }
         
-        [Required]
-        public string KnownAs { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string MobilePhone { get; set; }
+      
+         public string KnownAs { get; set; }
 
-        [Required]
         public string City { get; set; }
-        [Required]
         public string Country { get; set; }
-        public DateTime Created { get; set; }
-        public DateTime LastActive { get; set; }
+        public DateTime DateCreated { get; set; }
+        public DateTime DateModified { get; set; }
         public UserForRegisterDto()
         {
-            Created = DateTime.Now;
-            LastActive = DateTime.Now;
+            DateCreated = DateTime.Now;
+            DateModified = DateTime.Now;
         }
     }
 }

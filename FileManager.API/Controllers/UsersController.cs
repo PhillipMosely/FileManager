@@ -10,7 +10,7 @@ using FileManager.API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace datingapp.api.Controllers
+namespace FileManager.API.Controllers
 {
     [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]

@@ -13,6 +13,9 @@ namespace FileManager.API.Helpers
             CreateMap<User,UserForDetailedDto>();
             CreateMap<UserForUpdateDto,User>();
             CreateMap<UserForRegisterDto,User>();
+            CreateMap<RoleForCreateDto,Role>();
+            CreateMap<RoleForUpdateDto,Role>();
+            CreateMap<Role,RoleForListDto>();
 
         }
     }
