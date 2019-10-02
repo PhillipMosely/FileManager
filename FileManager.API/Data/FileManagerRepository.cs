@@ -35,9 +35,7 @@ namespace FileManager.API.Data
 
         public async Task<PagedList<User>> GetUsers(UserParams userParams)
         {
-            var users = _context.Users.OrderByDescending(u => u.LastName).AsQueryable();
-
-            users = users.Where(u => u.Id != userParams.UserId);
+            var users = _context.Users.OrderBy(u => u.LastName).AsQueryable();
 
             return await PagedList<User>.CreateAsync(users,userParams.PageNumber,userParams.PageSize);
         }
