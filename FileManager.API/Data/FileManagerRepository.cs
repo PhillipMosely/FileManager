@@ -44,13 +44,13 @@ namespace FileManager.API.Data
 
         public async Task<File> GetFile(int id)
         {
-            var File = await _context.File.FirstOrDefaultAsync(p => p.Id == id);
+            var File = await _context.Files.FirstOrDefaultAsync(p => p.Id == id);
 
             return File;
         }
         public async Task<Role> GetRole(int id)
         {
-            var Role = await _context.Role.FirstOrDefaultAsync(p => p.Id == id);
+            var Role = await _context.Roles.FirstOrDefaultAsync(p => p.Id == id);
 
             return Role;
         }

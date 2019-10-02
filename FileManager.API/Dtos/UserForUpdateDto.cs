@@ -1,3 +1,5 @@
+using System;
+
 namespace FileManager.API.Dtos
 {
     public class UserForUpdateDto
@@ -7,6 +9,7 @@ namespace FileManager.API.Dtos
         public string LastName { get; set; }
         public string Email { get; set; }
         public string MobilePhone { get; set; }
+        public DateTime DateModified { get; set; }
         public string City { get; set; }
         public string Country { get; set; }
         public UserForUpdateDto()

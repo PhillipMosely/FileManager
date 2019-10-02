@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using FileManager.API.Models;
@@ -9,28 +10,36 @@ namespace FileManager.API.Data
     {
         public static void SeedUsers(DataContext context) 
         {
-            var roles = new Role[] {
-                {RoleName="Admin",
-                Description="Administrative Role"},
-                {RoleName="Users",
-                Description="User Role"}
-            };
-            context.Roles.Add(roles);
+            if (!context.Users.Any())
+            {
+                var roles = new Role[2];
+                var role = new Role { 
+                    RoleName="Admin",
+                    Description="Administrative Role"};
+                roles.Append(role);
+                    
+                var role2 = new Role {
+                    RoleName="Users",
+                    Description="User Role"};
+                roles.Append(role2);
 
-            var user = new User {
-                FirstName = "Admin",
-                LastName = "Admin",
-                UserName = "admin",
-                DateCreated = DateTime.Now,
-                DateModified = DateTime.Now
-            };            
-            
-            byte[] passwordHash, passwordSalt;
-            CreatePasswordHash("password",out passwordHash, out passwordSalt);
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
+                context.Roles.AddRange(roles);
 
-            context.Users.Add(user);
+                var user = new User {
+                    FirstName = "Admin",
+                    LastName = "Admin",
+                    UserName = "admin",
+                    DateCreated = DateTime.Now,
+                    DateModified = DateTime.Now
+                };            
+                
+                byte[] passwordHash, passwordSalt;
+                CreatePasswordHash("password",out passwordHash, out passwordSalt);
+                user.PasswordHash = passwordHash;
+                user.PasswordSalt = passwordSalt;
+
+                context.Users.Add(user);
+            }
 
 
             // if (!context.Users.Any())
