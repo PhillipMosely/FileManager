@@ -12,18 +12,15 @@ namespace FileManager.API.Data
         {
             if (!context.Users.Any())
             {
-                var roles = new Role[2];
                 var role = new Role { 
                     RoleName="Admin",
                     Description="Administrative Role"};
-                roles.Append(role);
+                context.Roles.Add(role);
                     
                 var role2 = new Role {
                     RoleName="Users",
                     Description="User Role"};
-                roles.Append(role2);
-
-                context.Roles.AddRange(roles);
+                context.Roles.Add(role2);
 
                 var user = new User {
                     FirstName = "Admin",
@@ -39,6 +36,26 @@ namespace FileManager.API.Data
                 user.PasswordSalt = passwordSalt;
 
                 context.Users.Add(user);
+
+                var user2 = new User {
+                    FirstName = "Test",
+                    LastName = "User",
+                    UserName = "testuser",
+                    DateCreated = DateTime.Now,
+                    DateModified = DateTime.Now
+                };            
+                
+                CreatePasswordHash("password",out passwordHash, out passwordSalt);
+                user2.PasswordHash = passwordHash;
+                user2.PasswordSalt = passwordSalt;
+
+                context.Users.Add(user2);
+
+                var userRole = new UserRole {
+                    User = user,
+                    Role = role
+                };
+
             }
 
 
