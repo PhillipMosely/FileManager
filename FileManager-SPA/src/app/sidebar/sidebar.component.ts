@@ -22,7 +22,7 @@ export interface ChildrenItems {
 export const ROUTES: RouteInfo[] = [
     {
         path: '/filemanager',
-        title: 'FileManager',
+        title: 'File Manager',
         type: 'link',
         icontype: 'nc-icon nc-single-copy-04'
     },

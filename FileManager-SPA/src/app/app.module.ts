@@ -15,7 +15,9 @@ import { NavbarModule} from './shared/navbar/navbar.module';
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 import { AppRoutes } from './app.routing';
-import { FilemanagerComponent } from './filemanager/filemanager.component';
+import { AuthService } from './_services/auth.service';
+import { ErrorInterceptorProvider } from './_services/error.interceptor';
+
 
 @NgModule({
    imports:      [
@@ -34,8 +36,11 @@ import { FilemanagerComponent } from './filemanager/filemanager.component';
    declarations: [
        AppComponent,
        AdminLayoutComponent,
-       AuthLayoutComponent,
-       FilemanagerComponent
+       AuthLayoutComponent
+   ],
+   providers: [
+    AuthService,
+    ErrorInterceptorProvider
    ],
    bootstrap:    [ AppComponent ]
 })

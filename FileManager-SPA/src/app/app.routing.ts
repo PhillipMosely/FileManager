@@ -3,11 +3,8 @@ import { Routes } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 
-export const AppRoutes: Routes = [{
-        path: '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full',
-      },{
+export const AppRoutes: Routes = [
+    {
         path: '',
         component: AdminLayoutComponent,
         children: [{
@@ -44,7 +41,8 @@ export const AppRoutes: Routes = [{
             path: '',
             loadChildren: './widgets/widgets.module#WidgetsModule'
         }]
-        },{
+        },
+        {
             path: '',
             component: AuthLayoutComponent,
             children: [{
