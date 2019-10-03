@@ -32,6 +32,9 @@ export const AppRoutes: Routes = [{
             path: 'calendar',
             loadChildren: './calendar/calendar.module#CalendarModule'
         },{
+            path: 'filemanager',
+            loadChildren: './filemanager/filemanager.module#FilemanagerModule'
+        },{
             path: '',
             loadChildren: './userpage/user.module#UserModule'
         },{

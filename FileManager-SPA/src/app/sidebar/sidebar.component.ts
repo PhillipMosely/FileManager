@@ -19,7 +19,14 @@ export interface ChildrenItems {
 }
 
 //Menu Items
-export const ROUTES: RouteInfo[] = [{
+export const ROUTES: RouteInfo[] = [
+    {
+        path: '/filemanager',
+        title: 'FileManager',
+        type: 'link',
+        icontype: 'nc-icon nc-single-copy-04'
+    },
+    {
         path: '/dashboard',
         title: 'Dashboard',
         type: 'link',
